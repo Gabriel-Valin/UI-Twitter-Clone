@@ -14,4 +14,9 @@ All tweets widgets are from Brazilian League of Legends Streamers 👾:brazil:
 
 # Initials Screenshots:
 
+### HomePage - 
 <img src="https://i.imgur.com/VqGClGA.png"/>
+
+### Drawer - 
+
+<img src="https://i.imgur.com/i8Ct8m3.jpg"/>
