@@ -6,13 +6,5 @@ class Tweet {
   final String subname;
   final String date;
 
-
-  Tweet({
-    this.id,
-    this.image,
-    this.name,
-    this.tweet,
-    this.subname,
-    this.date
-});
+  Tweet({this.id, this.image, this.name, this.tweet, this.subname, this.date});
 }

@@ -1,7 +1,10 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:twitterclone/models/drawer.dart';
 import 'package:twitterclone/models/tweet.dart';
+import 'package:twitterclone/views/widgets/privatemessage.dart';
+import 'package:twitterclone/views/widgets/story.dart';
 
 class Twitter extends StatefulWidget {
   @override
@@ -148,7 +151,7 @@ class _TwitterState extends State<Twitter> {
                       Row(
                         children: <Widget>[
                           Icon(
-                            Icons.person_outline,
+                            MaterialIcons.person_outline,
                             size: 30,
                             color: Colors.grey,
                           ),
@@ -163,7 +166,7 @@ class _TwitterState extends State<Twitter> {
                       Row(
                         children: <Widget>[
                           Icon(
-                            Icons.format_list_bulleted,
+                            FontAwesome.list_alt,
                             size: 30,
                             color: Colors.grey,
                           ),
@@ -208,7 +211,7 @@ class _TwitterState extends State<Twitter> {
                       Row(
                         children: <Widget>[
                           Icon(
-                            Icons.flash_on,
+                            MaterialCommunityIcons.flash_outline,
                             size: 30,
                             color: Colors.grey,
                           ),
@@ -254,11 +257,12 @@ class _TwitterState extends State<Twitter> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           IconButton(
-                              icon: Icon(Icons.lightbulb_outline,
+                              icon: Icon(
+                                  MaterialCommunityIcons.lightbulb_off_outline,
                                   color: Color(0xff1da1f3)),
                               onPressed: null),
                           IconButton(
-                              icon: Icon(Icons.gradient,
+                              icon: Icon(AntDesign.qrcode,
                                   color: Color(0xff1da1f3)),
                               onPressed: null)
                         ],
@@ -322,84 +326,100 @@ class _TwitterState extends State<Twitter> {
               IconButton(
                   icon: Icon(Icons.local_post_office,
                       color: Colors.grey, size: 30),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PrivateMessage()));
+                  }),
             ],
           ),
         ),
       ),
-      body: SingleChildScrollView(
-          child: Column(
-        children: _tweets.map((tw) {
-          return Container(
-              decoration: BoxDecoration(
-                  border: Border(
-                bottom: BorderSide(width: 0.5, color: Colors.grey),
-              )),
-              padding: EdgeInsets.all(8),
-              child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(tw.image),
-                  radius: 25,
-                ),
-                title: Container(
-                  //width: 30,
-                  //color: Colors.orangeAccent,
-                  child: Wrap(
-                    children: [
-                      Text(tw.name,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 16)),
-                      SizedBox(width: 6.0),
-                      Text(tw.subname,
-                          style: TextStyle(fontSize: 14, color: Colors.grey)),
-                      SizedBox(width: 4.0),
-                      Text("•",
-                          style: TextStyle(fontSize: 10, color: Colors.grey)),
-                      SizedBox(width: 4.0),
-                      Text(tw.date,
-                          style: TextStyle(fontSize: 14, color: Colors.grey)),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(tw.tweet,
-                            style: TextStyle(
-                                color: Colors.white,
-                                letterSpacing: 0.5,
-                                fontFamily: "Arial",
-                                fontSize: 14)),
-                      ),
-                      Row(
-                        //mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
+      body: Column(
+        children: <Widget>[
+          StoryWid(),
+          Expanded(
+            child: SingleChildScrollView(
+                child: Column(
+              children: _tweets.map((tw) {
+                return Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                    bottom: BorderSide(width: 0.5, color: Colors.grey),
+                  )),
+                  padding: EdgeInsets.all(8.0),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(tw.image),
+                      radius: 25,
+                    ),
+                    title: Container(
+                      //width: 30,
+                      //color: Colors.orangeAccent,
+                      child: Wrap(
                         children: [
-                          IconButton(
-                              icon: Icon(Icons.repeat,
-                                  color: Colors.grey, size: 20),
-                              onPressed: null),
-                          SizedBox(width: 8.0),
-                          IconButton(
-                              icon: Icon(Icons.favorite_border,
-                                  color: Colors.grey, size: 20),
-                              onPressed: null),
-                          SizedBox(width: 8.0),
-                          IconButton(
-                              icon: Icon(Icons.speaker_notes,
-                                  color: Colors.grey, size: 20),
-                              onPressed: null),
-                          SizedBox(width: 8.0),
-                          IconButton(
-                              icon: Icon(Icons.call_split,
-                                  color: Colors.grey, size: 20),
-                              onPressed: null)
+                          Text(tw.name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 16)),
+                          SizedBox(width: 6.0),
+                          Text(tw.subname,
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.grey)),
+                          SizedBox(width: 4.0),
+                          Text("•",
+                              style:
+                                  TextStyle(fontSize: 10, color: Colors.grey)),
+                          SizedBox(width: 4.0),
+                          Text(tw.date,
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.grey)),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: Text(tw.tweet,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 0.5,
+                                    fontFamily: "Arial",
+                                    fontSize: 14)),
+                          ),
+                          Row(
+                            //mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              IconButton(
+                                  icon: Icon(AntDesign.message1,
+                                      color: Colors.grey, size: 15),
+                                  onPressed: null),
+                              SizedBox(width: 8.0),
+                              IconButton(
+                                  icon: Icon(AntDesign.retweet,
+                                      color: Colors.grey, size: 15),
+                                  onPressed: null),
+                              SizedBox(width: 8.0),
+                              IconButton(
+                                  icon: Icon(AntDesign.hearto,
+                                      color: Colors.grey, size: 15),
+                                  onPressed: null),
+                              SizedBox(width: 8.0),
+                              IconButton(
+                                  icon: Icon(Entypo.share_alternative,
+                                      color: Colors.grey, size: 15),
+                                  onPressed: null)
+                            ],
+                          ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ));
-        }).toList(),
-      )),
+                );
+              }).toList(),
+            )),
+          ),
+        ],
+      ),
     );
   }
 }
