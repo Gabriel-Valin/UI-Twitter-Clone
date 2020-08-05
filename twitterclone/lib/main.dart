@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:twitterclone/views/homepage.dart';
+import 'package:twitterclone/views/widgets/news.dart';
 import 'package:twitterclone/views/widgets/privatemessage.dart';
 
 void main() {

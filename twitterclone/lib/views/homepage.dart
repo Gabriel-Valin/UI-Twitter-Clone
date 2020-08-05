@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:twitterclone/models/drawer.dart';
 import 'package:twitterclone/models/tweet.dart';
+import 'package:twitterclone/views/widgets/news.dart';
 import 'package:twitterclone/views/widgets/privatemessage.dart';
 import 'package:twitterclone/views/widgets/story.dart';
 
@@ -277,7 +278,6 @@ class _TwitterState extends State<Twitter> {
       ),
       appBar: AppBar(
         elevation: 0,
-        //backgroundColor: Color(0xff16202a),
         backgroundColor: Colors.black45,
         centerTitle: true,
         title: Icon(
@@ -285,11 +285,6 @@ class _TwitterState extends State<Twitter> {
           color: Color(0xff1da1f3),
           size: 40.0,
         ),
-        //leading: Icon(
-        //Icons.menu,
-        //color: Color(0xff1da1f3),
-        //size: 30.0,
-        //),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
@@ -319,7 +314,10 @@ class _TwitterState extends State<Twitter> {
                   onPressed: () {}),
               IconButton(
                   icon: Icon(Icons.search, color: Colors.grey, size: 30),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Newsletter()));
+                  }),
               IconButton(
                   icon: Icon(Icons.notifications, color: Colors.grey, size: 30),
                   onPressed: () {}),
@@ -355,15 +353,13 @@ class _TwitterState extends State<Twitter> {
                       radius: 25,
                     ),
                     title: Container(
-                      //width: 30,
-                      //color: Colors.orangeAccent,
                       child: Wrap(
                         children: [
                           Text(tw.name,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
-                                  fontSize: 16)),
+                                  fontSize: 14)),
                           SizedBox(width: 6.0),
                           Text(tw.subname,
                               style:

@@ -51,11 +51,11 @@ class _PrivateMessageState extends State<PrivateMessage> {
         elevation: 0,
         title: Text("Mensagens"),
         centerTitle: true,
-        leading: Icon(Icons.menu),
+        leading: Icon(Icons.menu, color: Colors.blue),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
-            child: Icon(FontAwesome.gear),
+            child: Icon(FontAwesome.gear, color: Colors.blue),
           )
         ],
       ),
